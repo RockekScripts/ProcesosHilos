@@ -9,8 +9,8 @@
 #ifdef POSIX_BARRIER
 typedef pthread_barrier_t sys_barrier_t;
 
-#else
 /* Synchronization barrier */
+#else
 typedef struct {
 	pthread_mutex_t mutex;		/* Barrier lock */
 	pthread_cond_t cond;		/* Condition variable where threads remain blocked */
@@ -18,11 +18,11 @@ typedef struct {
 	int max_threads;			/* Number of threads that rely on the synchronization barrier
     							   (This value is set up upon barrier creation, and must not be modified afterwards) */
 } sys_barrier_t;
-#endif
 
 int sys_barrier_init(sys_barrier_t* barrier, unsigned int nthreads);
 int sys_barrier_destroy(sys_barrier_t* barrier);
 int sys_barrier_wait(sys_barrier_t *barrier);
+#endif
 
 #endif // Barrier
 

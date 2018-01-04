@@ -7,8 +7,7 @@ MY_INCLUDES=.
 HEADERS=$(wildcard $(MY_INCLUDES)/*.h)
 OS=$(shell uname)
 LDFLAGS=-lpthread
-#CFLAGS=-g -Wall 
-CFLAGS=-g -Wall -DPOSIX_BARRIER
+CFLAGS=-g -Wall -dPOSIX_BARRIER
 
 all: $(TARGET)
 	

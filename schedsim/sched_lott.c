@@ -29,6 +29,7 @@ static int task_new_lott(task_t* t)
 
 static task_t* pick_next_task_lott(runqueue_t* rq)
 {
+	srand(time(NULL));
 	struct lottery_data* cs_data=malloc(sizeof(struct lottery_data));
 	task_t* it=head_slist(&rq->tasks);
 	int totalTickets = 0;
