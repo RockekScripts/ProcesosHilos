@@ -74,7 +74,8 @@ static void enqueue_task_lott(task_t* t,runqueue_t* rq, int preempted)
 		return;
 
 	insert_slist(&rq->tasks,t); //Push task
-	//cs_data->remaining_ticks_slice=rr_quantum; // Reset slice
+	struct lottery_data* cs_data=(struct lottery_data*) t->tcs_data;
+	cs_data->remaining_ticks=lott_quantum; // Reset slice
 }
 static void task_tick_lott(runqueue_t* rq)
 {
