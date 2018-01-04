@@ -1,43 +1,83 @@
 (t0): New task P1
-(t0): New task P3
 (t0): P1 running
+(t1): New task P2
+(t1): New task P3
 (t1): P1 running
+(t2): New task P4
 (t2): P1 running
-(t3): Task P1 goes to sleep until (t8)
-(t2): Task P4 migrated from CPU 1 to CPU 0 
-(t2): Context switch (P1)<->(P4)
-(t3): P4 running
-(t4): P4 running
-(t5): P4 running
-(t6): Task P4 goes to sleep until (t11)
-(t5): Context switch (P4)<->(idle)
-(t6): idle running
-(t7): idle running
-(t8): task P1 awake
-(t7): Context switch (idle)<->(P1)
-(t8): P1 running
-(t9): P1 running
-(t10): P1 running
-(t11): task P4 awake
-(t11): P1 running
-(t12): Task P1 goes to sleep until (t13)
-(t11): Context switch (P1)<->(P4)
-(t12): P4 running
+(t3): Task P1 goes to sleep until (t4)
+(t3): New task P5
+(t2): Context switch (P1)<->(P3)
+(t3): P3 running
+(t4): task P1 awake
+(t4): P3 running
+(t5): P3 running
+(t6): P3 running
+(t7): P3 running
+(t8): P3 running
+(t9): P3 running
+(t10): Task P3 goes to sleep until (t11)
+(t9): Context switch (P3)<->(P2)
+(t10): P2 running
+(t11): task P3 awake
+(t11): P2 running
+(t12): P2 running
+(t12): Context switch (P2)<->(P4)
 (t13): P4 running
 (t14): P4 running
 (t15): P4 running
-(t16): Task P4 goes to sleep until (t17)
-(t15): Context switch (P4)<->(idle)
-(t16): idle running
-(t17): idle running
+(t15): Context switch (P4)<->(P3)
+(t16): P3 running
+(t17): P3 running
+(t18): P3 running
+(t18): Context switch (P3)<->(P4)
+(t19): P4 running
+(t20): P4 running
+(t21): Task P4 goes to sleep until (t22)
+(t20): Context switch (P4)<->(P5)
+(t21): P5 running
+(t22): task P4 awake
+(t22): P5 running
+(t23): P5 running
+(t23): Context switch (P5)<->(P1)
+(t24): P1 running
+(t25): P1 running
+(t26): P1 running
+(t26): Context switch (P1)<->(P4)
+(t27): P4 running
+(t28): P4 running
+(t29): P4 running
+(t30): P4 running
+(t31): P4 running
+(t32): Task P4 goes to sleep until (t33)
+(t31): Context switch (P4)<->(P5)
+(t32): P5 running
+(t32): Context switch (P5)<->(P1)
+(t33): P1 running
+(t33): Context switch (P1)<->(idle)
 ==================
 P1	0	3	running
-P1	3	8	I/O
-P1	8	12	running
-P1	12	13	I/O
-P3	0	1	ready
-P4	3	6	running
-P4	6	11	I/O
-P4	11	12	ready
-P4	12	16	running
-P4	16	17	I/O
+P1	3	4	I/O
+P1	4	24	ready
+P1	24	27	running
+P1	27	33	ready
+P1	33	34	running
+P2	1	10	ready
+P2	10	13	running
+P3	1	3	ready
+P3	3	10	running
+P3	10	11	I/O
+P3	11	16	ready
+P3	16	19	running
+P4	2	13	ready
+P4	13	16	running
+P4	16	19	ready
+P4	19	21	running
+P4	21	22	I/O
+P4	22	27	ready
+P4	27	32	running
+P4	32	33	I/O
+P5	3	21	ready
+P5	21	24	running
+P5	24	32	ready
+P5	32	33	running

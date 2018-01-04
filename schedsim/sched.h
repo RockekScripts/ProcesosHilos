@@ -98,6 +98,8 @@ extern bool debug_mode;
 extern useconds_t tick_delay;
 extern int max_simulation_steps;
 extern int rr_quantum;
+extern int lott_quantum;
+extern int lottery_priorities[4];
 extern int load_balancing_period;
 
 /* This interface must be implemented for each scheduling algorithm */
@@ -137,7 +139,7 @@ static const sched_choice_t available_schedulers[NR_AVAILABLE_SCHEDULERS]= {
 	{RR_SCHED,"RR",&rr_sched},
 	{SJF_SCHED,"SJF",&sjf_sched},
 	{FIFO_SCHED,"FIFO",&fifo_sched},
-	{LOTT_SCHED,"FIFO",&fifo_sched}
+	{LOTT_SCHED,"LOTT",&lott_sched},
 };
 
 

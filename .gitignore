@@ -1,1 +1,5 @@
 *.o
+/.settings
+*.cproject
+*.project
+schedsim

@@ -59,5 +59,4 @@ sched_class_t sjf_sched= {
 	.pick_next_task=pick_next_task_sjf,
 	.enqueue_task=enqueue_task_sjf,
 	.steal_task=steal_task_sjf,
-	.task_new=task_new_lott,
 };
