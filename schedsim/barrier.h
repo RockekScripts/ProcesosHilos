@@ -1,6 +1,7 @@
 #ifndef  BARRIER_H
 #define  BARRIER_H
 #include <pthread.h>
+#include <semaphore.h>
 
 
 #if defined(__APPLE__) && defined(__MACH__)
@@ -12,12 +13,12 @@ typedef pthread_barrier_t sys_barrier_t;
 
 #else
 /* Synchronization barrier */
+/* Synchronization barrier */
 typedef struct {
-	pthread_mutex_t mutex;		/* Barrier lock */
-	pthread_cond_t cond;		/* Condition variable where threads remain blocked */
-	int nr_threads_arrived;		/* Number of threads that reached the barrier. */
-	int max_threads;			/* Number of threads that rely on the synchronization barrier
-    							   (This value is set up upon barrier creation, and must not be modified afterwards) */
+	sem_t mutex; /* Barrier lock */
+	sem_t cond; /* Variable where threads remain blocked */
+	int nr_threads_arrived; /* Number of threads that reached the barrier */
+	int max_threads; /* Number of threads that rely on the barrier */
 } sys_barrier_t;
 #endif
 

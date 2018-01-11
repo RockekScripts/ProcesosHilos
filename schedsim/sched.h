@@ -100,6 +100,7 @@ extern int max_simulation_steps;
 extern int rr_quantum;
 extern int lott_quantum;
 extern int lottery_priorities[4];
+extern int ml_quantum[3];
 extern int load_balancing_period;
 
 /* This interface must be implemented for each scheduling algorithm */
@@ -119,12 +120,14 @@ extern sched_class_t rr_sched;
 extern sched_class_t sjf_sched;
 extern sched_class_t fifo_sched;
 extern sched_class_t lott_sched;
+extern sched_class_t ml_sched;
 /* Numerical IDs for the available scheduling algorithms */
 enum {
 	RR_SCHED,
 	SJF_SCHED,
 	FIFO_SCHED,
 	LOTT_SCHED,
+	ML_SCHED,
 	NR_AVAILABLE_SCHEDULERS
 };
 
@@ -140,6 +143,7 @@ static const sched_choice_t available_schedulers[NR_AVAILABLE_SCHEDULERS]= {
 	{SJF_SCHED,"SJF",&sjf_sched},
 	{FIFO_SCHED,"FIFO",&fifo_sched},
 	{LOTT_SCHED,"LOTT",&lott_sched},
+	{ML_SCHED,"ML",&ml_sched},
 };
 
 
