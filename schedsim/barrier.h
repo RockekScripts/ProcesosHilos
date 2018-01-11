@@ -2,6 +2,7 @@
 #define  BARRIER_H
 #include <pthread.h>
 
+
 #if defined(__APPLE__) && defined(__MACH__)
 #undef POSIX_BARRIER    /* MAC OS X does not implement pthread's barriers so use custom implementation instead */
 #endif

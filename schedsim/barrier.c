@@ -32,9 +32,9 @@ int sys_barrier_init(sys_barrier_t *barrier, unsigned int nr_threads)
 	*/
 	barrier->max_threads = nr_threads;
 	barrier->nr_threads_arrived = 0;
-	pthread_cond_init(&barrier->cond,NULL);
-	pthread_mutex_init(&barrier->mutex,NULL);
-	return 0;
+	pthread_cond_init(&(barrier->cond),NULL);
+	pthread_mutex_init(&(barrier->mutex),NULL);
+	return 1;
 }
 
 /* Destroy barrier resources */
@@ -45,7 +45,7 @@ int sys_barrier_destroy(sys_barrier_t *barrier)
 	*/
 	pthread_cond_destroy(&barrier->cond);
 	pthread_mutex_destroy(&barrier->mutex);
-	return 0;
+	return 1;
 }
 
 /* Main synchronization operation */
@@ -65,13 +65,15 @@ int sys_barrier_wait(sys_barrier_t *barrier)
 	*/
 	pthread_mutex_lock(&barrier->mutex);
 	barrier->nr_threads_arrived++;
-	if(barrier->nr_threads_arrived<barrier->max_threads)
+	if(barrier->nr_threads_arrived<barrier->max_threads){
 		pthread_cond_wait(&barrier->cond,&barrier->mutex);
+		barrier->nr_threads_arrived--;
+	}
 	else{
 		pthread_cond_broadcast(&barrier->cond);
 	}
 	pthread_mutex_unlock(&barrier->mutex);
-	return 0;
+	return 1;
 }
 
 #endif /* POSIX_BARRIER */
